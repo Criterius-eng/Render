@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-dotenv.config();
 
 import perfilRoutes from './routes/profile.js';
 import {
