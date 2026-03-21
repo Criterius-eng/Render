@@ -1,7 +1,0 @@
-scikit-fuzzy
-scipy
-networkx
-matplotlib
-numpy
-fastapi
-uvicorn[standard]
