@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-
+dotenv.config();
 
 import perfilRoutes from './routes/profile.js';
 import {
@@ -138,7 +138,8 @@ app.post("/should-water", mandani);
 
 app.use("/favoritos", favoritos);
 
+const PORT = process.env.PORT || 8080;
 
-app.listen(8080, () => {
-    console.log("Server running on port 8080");
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
