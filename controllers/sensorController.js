@@ -60,7 +60,6 @@ export async function mandani(req, res){
             humidity: humidity,
             light: light
         });
-        console.log("Esto es lo que devuelve mandani", response);
         res.json(response.data);
     } catch(error){
         console.log("Error en mandani", error);
