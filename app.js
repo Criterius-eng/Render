@@ -163,11 +163,6 @@ app.post("/should-water", mandani);
 
 app.use("/favoritos", favoritos);
 
-const PORT = process.env.PORT || 8080;
-
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
 
 /*
  * HISTORIAL DE REGADO 
@@ -193,4 +188,10 @@ app.get("/getUltimoRiego/:idHuerto", async (req, res) => {
         console.log("Error al obtener ultimo riego: ", error.message);
         res.status(500).json({error: "Error al obtener ultimo riego"});
     }
+});
+
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
