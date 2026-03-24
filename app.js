@@ -142,3 +142,29 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+/*
+ * HISTORIAL DE REGADO 
+*/
+
+app.get("/getHistorialRiego/:idHuerto", async (req, res) => {
+    const { idHuerto } = req.params;
+    try {
+        const historial = await getHistorialRiego(idHuerto);
+        res.json(historial);
+    } catch(error){
+        console.log("Error al obtener historial de riego: ", error.message);
+        res.status(500).json({error: "Error al obtener historial de riego"});
+    }
+})
+
+app.get("/getUltimoRiego/:idHuerto", async (req, res) => {
+    const { idHuerto } = req.params;
+    try {
+        const ultimo = await getUltimoRiego(idHuerto);
+        res.json(ultimo);
+    } catch (error){
+        console.log("Error al obtener ultimo riego: ", error.message);
+        res.status(500).json({error: "Error al obtener ultimo riego"});
+    }
+});
