@@ -364,3 +364,23 @@ export async function isFavorite(usuarioId, cultivoId) {
     );
     return rows.rowCount > 0;
 }
+
+/*
+ * Consulta en la tabla historial_regado 
+*/
+
+export async function getHistorialRiego(idHuerto){
+    const rows = await pool.query(
+        `SELECT * FROM historial_regado WHERE = $1 ORDER BY fecha DESC, hora DESC`
+        [idHuerto]
+    );
+    return rows.rows;
+}
+
+export async function getUltimoRiego(idHuerto) {
+    const rows = await pool.query(
+        `SELECT * FROM historial_regado WHERE idHuerto = $1 ORDER BY fecha DESC, hora DESC LIMIT 1`,
+        [idHuerto]
+    );
+    return rows.rowCount > 0 ? rows.rows[0] : null;
+}
