@@ -103,7 +103,7 @@ app.get("/searchIdCrop/:name", searchIdCrop);
     Subir Imagen
 */
 
-app.post("upload", upload.single("file"), async (req, res) => {
+app.post("/upload", upload.single("file"), async (req, res) => {
     try {
         const file = req.file;
 
