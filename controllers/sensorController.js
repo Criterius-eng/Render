@@ -48,6 +48,7 @@ export async function getSensorData(req, res){
 
 export async function mandani(req, res){
     const {
+        deviceName,
         soilMoisture,
         temperature,
         humidity,
@@ -60,6 +61,10 @@ export async function mandani(req, res){
             humidity: humidity,
             light: light
         });
+
+        const idGarden = await searchForGardenByIdSensor(deviceName);
+        await insertHistorialRiego(idGarden, response.data[1]);
+
         res.json(response.data);
     } catch(error){
         console.log("Error en mandani", error);
