@@ -67,6 +67,8 @@ export async function mandani(req, res){
         const idSensor = await searchForSensorByName(deviceName);
         console.log("ID del sensor: ", idSensor);
         const idGarden = await searchForGardenByIdSensor(idSensor);
+        console.log("ID del huerto: ", idGarden)
+        console.log("Tiempo: ", response.data[1]);
         const result = await insertHistorialRiego(idGarden, response.data[1]);
 
         res.json(response.data);

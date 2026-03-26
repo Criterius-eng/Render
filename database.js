@@ -204,7 +204,7 @@ export async function insertGarden(idSensor, idCultivo, nombre, fechaInicio, fec
 
 export async function searchForGardenByIdSensor(name) {
     const result = await pool.query(
-        `SELECT * FROM huerto WHERE idSensor = $1`,
+        `SELECT * FROM huerto WHERE "idSensor" = $1`,
         [name]
     );
 
