@@ -2,6 +2,8 @@ import dotenv from 'dotenv';
 import axios from 'axios';
 import {
     searchForSensorByName,
+    searchForGardenByIdSensor,
+    insertHistorialRiego,
     lastValueRecordedSensorData,
     insertSensorData
 } from "../database.js";
