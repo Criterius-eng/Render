@@ -64,8 +64,9 @@ export async function mandani(req, res){
             light: light
         });
 
-        const idGarden = await searchForGardenByIdSensor(deviceName);
-        await insertHistorialRiego(idGarden, response.data[1]);
+        const idSensor = await searchForSensorByName(deviceName);
+        const idGarden = await searchForGardenByIdSensor(idSensor);
+        const result = await insertHistorialRiego(idGarden, response.data[1]);
 
         res.json(response.data);
     } catch(error){
