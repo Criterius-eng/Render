@@ -211,6 +211,22 @@ export async function searchForGardenByIdSensor(name) {
     return result.rows[0].idHuerto;
 }
 
+export async function gardenCompleted(idHuerto){
+    const result = await pool.query(
+        `UPDATE huerto SET fechaFin = CURRENT_DATE, estado = TRUE WHERE "idHuerto" = $1`,
+        [idHuerto]
+    );
+}
+
+export async function lastValueRecordedGarden(id){
+    const result = await pool.query(
+        `SELECT * FROM huerto WHERE "idSensor" = $1 ORDER BY "idHuerto" DESC LIMIT 1`,
+        [id]
+    );
+
+    return result.rows[0].idHuerto;
+}
+
 /*
  *  Consultas en la tabla cultivo
 */
