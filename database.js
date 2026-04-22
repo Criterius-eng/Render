@@ -213,7 +213,7 @@ export async function searchForGardenByIdSensor(name) {
 
 export async function gardenCompleted(idHuerto){
     const result = await pool.query(
-        `UPDATE huerto SET fechaFin = CURRENT_DATE, estado = TRUE WHERE "idHuerto" = $1`,
+        `UPDATE huerto SET "fechaFin" = CURRENT_DATE, estado = TRUE WHERE "idHuerto" = $1`,
         [idHuerto]
     );
 }
