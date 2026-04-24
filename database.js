@@ -99,7 +99,7 @@ export async function getUserProfile(idUsuario) {
         nombre: userRows.rows[0].nombre,
         apellidos: userRows.rows[0].apellidos,
         correo: userRows.rows[0].correo,
-        historial: historialRows.rows[0]
+        historial: historialRows.rows
     };
 }
 
