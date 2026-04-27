@@ -189,7 +189,7 @@ app.post("/getUltimoRiego", async (req, res) => {
     const { 
         idSensor,
         huerto
-     } = req.params;
+     } = req.body;
     try {
         console.log(idSensor, huerto);
         const idHuerto = await SearchForGardenIDByNameAndSensorID(huerto,idSensor);
