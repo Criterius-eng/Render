@@ -227,6 +227,15 @@ export async function lastValueRecordedGarden(id){
     return result.rows[0].idHuerto;
 }
 
+export async function SearchForGardenIDByNameAndSensorID(name, id){
+    const result = await pool.query(
+        `SELECT * FROM huerto WHERE "idSensor" = $1 AND nombre = $2`,
+        [id, name]
+    );
+
+    return result.rows[0].idHuerto;
+}
+
 /*
  *  Consultas en la tabla cultivo
 */
@@ -389,7 +398,7 @@ export async function insertHistorialRiego(idHuerto, duaration) {
 
 export async function getHistorialRiego(idHuerto){
     const rows = await pool.query(
-        `SELECT * FROM historial_regado WHERE = $1 ORDER BY fecha DESC, hora DESC`
+        `SELECT * FROM historial_regado WHERE "idHuerto" = $1 ORDER BY fecha DESC, hora DESC`
         [idHuerto]
     );
     return rows.rows;
@@ -397,7 +406,7 @@ export async function getHistorialRiego(idHuerto){
 
 export async function getUltimoRiego(idHuerto) {
     const rows = await pool.query(
-        `SELECT * FROM historial_regado WHERE idHuerto = $1 ORDER BY fecha DESC, hora DESC LIMIT 1`,
+        `SELECT * FROM historial_regado WHERE "idHuerto" = $1 ORDER BY fecha DESC, hora DESC LIMIT 1`,
         [idHuerto]
     );
     return rows.rowCount > 0 ? rows.rows[0] : null;
