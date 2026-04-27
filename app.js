@@ -175,12 +175,8 @@ app.use("/favoritos", favoritos);
 */
 
 app.get("/getHistorialRiego/:idHuerto", async (req, res) => {
-    const { 
-        idUsuario,
-        huerto
-     } = req.params;
+    const { idHuerto } = req.params;
     try {
-        const idHuerto = await SearchForGardenIDByNameAndSensorID(huerto,idUsuario);
         const historial = await getHistorialRiego(idHuerto);
         res.json(historial);
     } catch(error){
@@ -189,9 +185,13 @@ app.get("/getHistorialRiego/:idHuerto", async (req, res) => {
     }
 })
 
-app.get("/getUltimoRiego/:idHuerto", async (req, res) => {
-    const { idHuerto } = req.params;
+app.post("/getUltimoRiego", async (req, res) => {
+    const { 
+        idUsuario,
+        huerto
+     } = req.params;
     try {
+        const idHuerto = await SearchForGardenIDByNameAndSensorID(huerto,idUsuario);
         const ultimo = await getUltimoRiego(idHuerto);
         res.json(ultimo);
     } catch (error){
