@@ -187,7 +187,7 @@ app.get("/getHistorialRiego/:idHuerto", async (req, res) => {
 
 app.post("/getUltimoRiego", async (req, res) => {
     const { 
-        idUsuario,
+        idSensor,
         huerto
      } = req.params;
     try {
