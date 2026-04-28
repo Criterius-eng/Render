@@ -401,7 +401,6 @@ export async function getHistorialRiego(idHuerto){
         `SELECT * FROM historial_regado WHERE "idHuerto" = $1 ORDER BY fecha DESC, hora DESC`,
         [idHuerto]
     );
-    console.log(rowa.rows);
     return rows.rows;
 }
 
