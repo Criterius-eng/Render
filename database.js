@@ -233,8 +233,6 @@ export async function SearchForGardenIDByNameAndSensorID(name, id){
         [id, name]
     );
 
-    console.log(result.rows);
-
     return result.rows[0].idHuerto;
 }
 
